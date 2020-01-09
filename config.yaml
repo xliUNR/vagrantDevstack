@@ -1,6 +1,6 @@
 # Hostname of the manager and the compute nodes.
-hostname_manager: devstackController
-hostname_compute: devstackCompute
+hostname_manager: manager.openstack.site
+hostname_compute: compute.openstack.site
 
 # The domain names and ips to add in the no_proxy variable (comma separated)
 #user_domains: .mycompany.com,10.20.30.40
@@ -15,7 +15,8 @@ service_password: secretsecret
 admin_password: secretsecret
 
 # The public SSH key that should be used for the system user 'stack'.
-#stack_sshkey: ssh-rsaAAAAB3NzaC1yc2EAAAADAQABAAABgQDOIqQtEtSe0cuzGMB0rFlV1nP+PujRIf5VEn7hs3xMxupLerSx+XcByI0tHE9X2HjGrVX/dq6ZaTWSfMHaHRBHeZXko2SBhGUsOZxTJjTJieOJrn7jAcPf0CzqhofU+mLov3349tTrU3Fw4TWAYLIb0aTHqHfp7cZGaMnZsocVUJ6QlyT3d5Rn+t4gTq5+PMivCtQckcxwUp/VqQyHy5MowaKMmlE01+2c3l51+HcVI2csiSFjbDI7+1npPxFP8R0WhgEQmnryBXA718FB1TbfMeqapL86PoVApECcVQOKgWsw+nxwidBrWYr2ttfjKHrysA8eHbpFkqZtHquIYmGXQazzhDjUqKg+FvMdnNie6Mi70ax5bTAJ/CmMRe/4bNr7a1hn8vI8SGLK538D7ZgwWImKAvtPKorGbn9g8nCr5VLU3K/L04wSFTUv5We94OZmLwZt2enB99C6HGRwmcKsWRqc+MKMjqUxRxkxnVWKvBm/mOwxUes6IvXbXh78tYU=
+stack_sshkey: AAAAB3NzaC1yc2EAAAADAQABAAABAQC0wBf08ASrQR6AKDYWJJINO/zTYt663byZJls29rb/6CDxj6o3CPDQxTaAngVoacksCnfX00kOlkaF6rRH6HKhDIZAZKGyq60B/i8KY/KHY5AJXdcixqxk9iPC4i7zo96I7CAfXrVQncuRgv1tj3p8lr+f2mKPMI2hs70fuDHNg9ikbRTChgAvFiXI7nPA10rWFp8QxbZrU0yy19RoPae9d5j7E7I2MEmwoqR5gPj2oD59NC6SqvCvqimEm9wVINOznz8FRJPsw9QUYFg0hTrE6/2Zkk5x8kElJoAu4dacrN3KsH9IwEQsWkbug8la7VvfcADMGpLrnocMSBHfV5sn
+
 # Define the setup mode to install the environment.
 # valid values: grenade, devstack
 # default value: devstack
@@ -26,7 +27,7 @@ setup_mode: devstack
 # descriptor of the interface. On some systems this can be something annoying
 # like 'en1: Wi-Fi (Airport)'. Vagrant will not use this setting unless you get
 # it exactly right.
-bridge_int: eth1
+#bridge_int: eno1
 
 # Enable the vagrant-hostmanager's ip_resolver in order to get the correct
 # nodes ip. You should install the vagrant-hostmanager plugin and enable this
@@ -63,13 +64,13 @@ devstack_branch: stable/rocky
 
 # It is possible to use a hostonly-network instead of a bridged network when
 # setting the parameter use_bridge to false.
-#use_bridge: false
+use_bridge: false
 
 # When using a hostonly-network it is possible to specify static IP addresses
 # using the following parameters. If those parameters are not specified DHCP
 # will be used.
-#ip_address_manager: 10.0.10.10
-#ip_address_compute: 10.0.10.20
+ip_address_manager: 192.168.50.5
+ip_address_compute: 192.168.50.6
 
 # Name of network interface in virtual machine - e.g. enp0s8 in ubuntu
 #guest_interface_default: eth1
@@ -78,6 +79,7 @@ devstack_branch: stable/rocky
 # Extra images to download and add to glance, a list of url's comma separated
 # for new images to be added to glance
 #extra_images: https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.img,https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img
+extra_images: https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
 
 # Extra services to enable on the manager node, a space separated list of
 # additional services to enable on the manager node. For example, to enable
